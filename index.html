@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="westtle">
+	<meta name="description" content="Simple calendar with changeable time.">
+	<meta name="keywords" content="calendar">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Calendar</title>
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
+
+	<link rel="icon" type="image/x-icon" href="#">
+	<link rel="stylesheet" type="text/css" href="./assets/styles/style.min.css">
+</head>
+<body>
+	<main>
+		<div id="calendar">
+			<div class="__picture">
+				<h1 class="_current-date">
+					<span class="current-day_"></span>
+					<time class="current-m-y_"></time>
+				</h1>
+				<div class="_change-date">
+					<button class="previous_" aria-label="Previous month"></button>
+					<button class="next_" aria-label="Next month"></button>
+				</div>
+			</div>
+			<div class="__dates">
+				<div class="_days-of-the-week">
+					<span data-day="sunday">S</span>
+					<span>M</span>
+					<span>T</span>
+					<span>W</span>
+					<span>T</span>
+					<span>F</span>
+					<span>S</span>
+				</div>
+				<div class="_days"></div>
+			</div>
+		</div>
+		<div id="notice">
+		    Repository: <a href="https://github.com/westtle/calendar" target="_blank">https://github.com/westtle/calendar</a>
+		</div>  
+	</main>
+
+	<script type="text/javascript" src="./assets/scripts/script.min.js"></script>
+</body>
+</html>

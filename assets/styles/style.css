@@ -1,0 +1,213 @@
+:root {
+	--font-size-primary: 0.906rem; /* 14.5px */
+	--font-size-secondary: 0.688rem; /* 11px */
+
+	--foreground: rgba(0, 0, 0, 0.75);
+	--foreground-white: rgba(255, 255, 255, 0.9);
+
+	--border-color: rgba(0, 0, 0, 0.55);
+	--border-shorthand: 0.063rem solid var(--border-color);
+
+	/* Button */
+	--button-hover-foreground: rgba(255, 255, 255, 0.9);
+	--button-hover-backround: rgba(0, 0, 0, 0.78);
+	--font-size-button: 0.769rem; /* 12.3px */
+
+	--seven: 0.438rem; /* 7px */
+	--twelve: 0.75rem; /* 12px */
+}
+
+*, *::before, *::after {
+	color: var(--foreground);
+	box-sizing: border-box;
+}
+
+body { /* Left & right spacing is left & right from default body margin + 12px */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 91vh;
+	margin-block: 4.5vh;
+	padding: var(--twelve);
+	font-family: "Karla", sans-serif;
+	font-size: var(--font-size-primary);
+}
+
+main {
+	width: 100%;
+	max-width: 15rem;
+}
+
+#calendar {
+	box-shadow: 0 0.1875rem 2rem rgba(0, 0, 0, 0.18);
+}
+
+/* Top Part */
+
+.__picture {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	background: url("https://picsum.photos/1280/720") no-repeat center;
+	background-size: cover;
+	height: 10.3125rem;
+	padding: 1rem 1.25rem;
+}
+
+._current-date {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+}
+
+.current-day_,
+.current-m-y_ {
+	color: var(--foreground-white);
+	font-size: var(--font-size-secondary);
+	text-shadow: 0.3rem 0.3rem 2rem rgba(0, 0, 0, 0.5);
+}
+
+.current-m-y_ {
+	font-size: 1.125rem;
+}
+
+._change-date {
+	display: flex;
+	gap: 0.75rem;
+}
+
+.previous_,
+.next_ {
+    background: none;
+    border: none;
+    width: 1.25rem;
+    aspect-ratio: 1/1;
+    padding: 0;
+    cursor: pointer;
+
+    position: relative;
+}
+
+.next_ {
+	rotate: 180deg;
+}
+
+.previous_::before,
+.next_::before {
+    content: "";
+    background: url("../Images/chevron-left.svg") no-repeat center;
+    background-size: 100%;
+    width: 100%;
+    aspect-ratio: 1/1;
+    filter: invert(100%);
+    opacity: 0.8;
+
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Bottom Part */
+
+.__dates {
+	padding: 1rem;
+}
+
+._days-of-the-week,
+._days {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	place-items: center;
+	grid-row-gap: 0.0625rem;
+}
+
+._days-of-the-week {
+	margin-block-end: 0.0625rem;
+	font-weight: bold;
+}
+
+._days-of-the-week > span,
+._days > time,
+._days > [data-double-dates="true"] {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 1.5rem;
+	aspect-ratio: 1/1;
+	cursor: default;
+}
+
+._days > time:hover,
+._days > [data-double-dates="true"]:hover {
+	font-weight: bold;
+}
+
+.slash_ {
+	font-size: var(--font-size-primary);
+}
+
+[data-day="sunday"],
+[data-day="sunday"] + .slash_ {
+	color: #FD5E5E;
+}
+
+[data-current-day="true"] {
+	color: var(--foreground-white);
+	background-color: var(--button-hover-backround);
+	border-radius: 0.125rem;
+}
+
+[data-in-other-month="true"] {
+	opacity: 0.6;
+}
+
+[data-double-dates="true"] {
+	font-size: 0.625rem;
+}
+
+[data-double-dates="true"] > time:first-child {
+	position: relative;
+	inset-block-start: -0.125rem;
+}
+
+[data-double-dates="true"] > time:last-child {
+	position: relative;
+	inset-block-start: 0.125rem;
+}
+
+/* Notice / Link */
+
+#notice {
+    margin-block-start: 0.656rem;
+    padding: 0 var(--seven);
+    font-family: initial;
+    font-size: var(--font-size-secondary);
+    text-align: center;
+    line-height: 1.1;
+    word-wrap: break-word;
+}
+
+/* Media Query */
+
+@media (hover: hover) {
+    .previous_::before,
+    .next_::before {
+        opacity: 0.6;
+    }
+
+    .previous_:hover::before,
+    .next_:hover::before,
+    .previous_:focus-visible::before,
+    .next_:focus-visible::before {
+        opacity: 0.8;
+    }
+}
+
+/* Font Size */
+@media (max-width: 30rem) { /* 480px */
+    html {
+        font-size: calc(1rem - 10%);
+    }
+}
+/* -------- */
